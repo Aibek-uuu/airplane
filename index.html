@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <title>Document</title>
+    <script src="airplane.js"></script>
+    <script src="airport.js"></script> 
+    <script src="city.js"></script>
+    
+    <script>
+
+		window.onload = function get_body() {
+
+
+            var cities = [];
+            cities.push(new City("Bishkek", 1000, 500))
+            cities.push(new City("Osh", 20, 720))
+            cities.push(new City("Batken", 883, 50))
+            cities.push(new City("Naryn", 1500, 300))
+            
+            var citySelect = document.getElementById("citySelect");
+
+            for (let i = 0; i < cities.length; i++) {
+                var option = document.createElement("option");
+                option.value = i;
+                option.text = cities[i].name;
+                citySelect.appendChild(option);
+            }
+            
+
+            var airplaneQty = prompt("введите количество самолетов")
+            var airport = new Airport();
+
+            var airplaneSelect = document.getElementById("airplaneSelect");
+            airplaneSelect.innerHTML = "";
+            for (let i = 1; i <= airplaneQty; i++) {
+                var option = document.createElement("option");
+                option.value = i;
+                option.text = "Airplane" + i;
+                airplaneSelect.appendChild(option);
+                airport.addAirplane(new airplane(i));
+            }
+ 
+            var moveToBtn= document.getElementById("moveTo");
+
+            moveToBtn.addEventListener(
+                "click",
+                () => {
+                    var selectedCity = document.getElementById("citySelect").value;
+                    var inputT = document.getElementById("timeInput").value;
+                    var selectedValue = document.getElementById("airplaneSelect").value;
+                    console.log(selectedValue);
+                    airport.move(cities[selectedCity].left, cities[selectedCity].top, Number(selectedValue), Number(inputT));
+                }
+            )
+                    
+        }
+
+
+
+
+</script>
+
+</head>
+
+<body>
+    <div class="airport">
+        Airport
+    </div>
+
+
+    <div class="airplane-container">
+        
+    </div>
+
+    <div class="dialogbox">
+        
+        <select id="citySelect">
+            <input type="text" id="timeInput" placeholder="Cкорость"/>
+        </select>
+
+        <select id="airplaneSelect">
+            
+        </select>
+        <button id="moveTo">Move to</button>
+    </div>
+</body>
+
+</html>

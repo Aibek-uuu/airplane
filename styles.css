@@ -1,0 +1,41 @@
+body {
+    /*background-image: url('https://www.orangesmile.com/common/img_country_maps/kyrgyzstan-map-0.jpg');*/
+    background-size: cover; 
+    background-repeat: no-repeat;
+}
+
+.airport {
+    background-color: blue;
+    width: 100px;
+    height: 100px;
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.airplane {
+    background-image: url('images/arplen.png');
+    transform-origin: center;
+    background-size: 35px 35px;
+    z-index: 0;
+    background-color: red;
+    width: 35px;
+    height: 35px;
+    color: white;
+    position: absolute;
+}
+
+.dialogbox {
+    position: absolute;
+    right: 15px;
+    bottom: 20px;
+}
+
+.city {
+    width: 20px;
+    height: 20px;
+    background-color: black;
+    border-radius: 50%;
+}   
